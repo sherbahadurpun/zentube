@@ -29,9 +29,14 @@
         .getElementById("ytForm")
         .addEventListener("submit", function (event) {
           event.preventDefault();
+
           var inputValue = document.getElementById("ytLink").value;
-          localStorage.setItem("inputValue", inputValue);
-          window.location.href = "download.html";
+          if (inputValue === "") {
+            alert("Please! Enter URL");
+          } else {
+            localStorage.setItem("inputValue", inputValue);
+            window.location.href = "download.html";
+          }
         });
     </script>
   </body>
