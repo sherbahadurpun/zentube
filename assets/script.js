@@ -11,7 +11,13 @@ const options = {
   },
 };
 
-var videoId = inputValue.match(/v=([^&]+)/)[1];
+const regex = /^https:\/\/youtu\.be\/([\w-]+)/;
+let videoId;
+
+inputValue.split("/")[2] === "youtu.be"
+  ? (videoId = inputValue.match(regex)[1])
+  : (videoId = inputValue.match(/v=([^&]+)/)[1]);
+
 fetch(
   `https://youtube-video-download-info.p.rapidapi.com/dl?id=${videoId}`,
   options
